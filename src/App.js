@@ -90,7 +90,7 @@ class App extends Component {
             {
                 label: 'Recursos', icon: 'pi pi-fw pi-globe', badge: '9',
                 items: [
-                    {label: 'Buscar Recursos', icon: 'pi pi-fw pi-star-o', command: () => {window.location = '#/sample'}}
+                    {label: 'Buscar Recursos', icon: 'pi pi-fw pi-star-o', command: () => {window.location = '#/recursos'}}
                 ]
             },
             {
@@ -167,7 +167,7 @@ class App extends Component {
                 <div className="layout-main">
 				
                     <Route path="/" exact component={Dashboard} />
-                    <Route path="/sample" component={RecursoDigital} />
+                    <Route path="/recursos" component={RecursoDigital} />
                 </div>
 
                 <AppFooter />

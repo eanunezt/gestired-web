@@ -1,30 +1,200 @@
-{"meta": {"limit": 20, "next": null, "offset": 0, "previous": null, "total_count": 4}, 
-"objects": 
-[
-    {"etiquetas": "Desarrollo Python programa video", 
-    "fechaRegistro": "2018-10-03T05:15:04", 
-    "id": 1, 
-    "nombre": "Desarrollo Python", 
-    "resource_uri": "/gestired/resource/1/", 
-    "responsables": ["Orlando Sabogal", "Leonardo Valvuena"], 
-    "tipoRecurso": "Video", 
-    "url": "https://k30.kn3.net/taringa/3/8/B/C/A/9/NegroGinez/9BE.jpg"},
-
-    {"etiquetas": "Dibujo Scrum infografia", 
-        "fechaRegistro": "2018-10-05T01:38:44", 
-        "id": 2, 
-        "nombre": "Dibujo Scrum", 
-        "resource_uri": "/gestired/resource/2/", 
-        "responsables": 
-        ["Lady Pinzón", "Leonardo Valvuena"], 
-        "tipoRecurso": "Infografía", 
-        "url": "https://www.multiplica.com/wp-content/uploads/2017/08/scrum2.png"}, 
-    {"etiquetas": "Dibujo Kanban imagen web", "fechaRegistro": "2018-10-05T01:43:53", 
-        "id": 3, "nombre": "Dibujo Kanban", "resource_uri": "/gestired/resource/3/",
-         "responsables": ["Edgar Núñez", "Jorge Martinez"], "tipoRecurso": "Elemento WEB", "url": "https://skelia.com/wp-content/uploads/2017/03/Scrum-vs-Kanban-06.png"}, 
-         
-{"etiquetas": "Fondo MiBanner imagen web", "fechaRegistro": "2018-10-05T01:54:25", 
-            "id": 4, "nombre": "Fondo MiBanner", "resource_uri": "/gestired/resource/4/", 
+{
+    "data":[
+        {
+            "etiquetas": "Desarrollo Python programa video", 
+            "fechaRegistro": "2018-10-03T05:15:04", 
+            "id": 0, 
+            "nombre": "Desarrollo Python2", 
+            "resource_uri": "/gestired/resource/1/", 
+            "responsables": ["Orlando Sabogal", "Leonardo Valvuena"], 
+            "tipoRecurso": "Video", 
+            "url": "https://k30.kn3.net/taringa/3/8/B/C/A/9/NegroGinez/9BE.jpg"
+        },
+        {
+            "etiquetas": "Dibujo Scrum infografia", 
+            "fechaRegistro": "2018-10-05T01:38:44", 
+            "id": 2, 
+            "nombre": "Dibujo Scrum", 
+            "resource_uri": "/gestired/resource/2/", 
+            "responsables":["Lady Pinzón", "Leonardo Valvuena"], 
+            "tipoRecurso": "Infografía", 
+            "url": "https://www.multiplica.com/wp-content/uploads/2017/08/scrum2.png"
+        },
+        {
+            "etiquetas": "Dibujo Kanban imagen web", 
+            "fechaRegistro": "2018-10-05T01:43:53", 
+            "id": 3, 
+            "nombre": "Dibujo Kanban", 
+            "resource_uri": "/gestired/resource/3/",
+            "responsables": ["Edgar Núñez", "Jorge Martinez"], 
+            "tipoRecurso": "Elemento WEB",
+            "url": "https://skelia.com/wp-content/uploads/2017/03/Scrum-vs-Kanban-06.png"
+        },             
+        {
+            "etiquetas": "Fondo MiBanner imagen web", 
+            "fechaRegistro": "2018-10-05T01:54:25", 
+            "id": 4, 
+            "nombre": "Fondo MiBanner", 
+            "resource_uri": "/gestired/resource/4/", 
             "responsables": ["Orlando Sabogal", "Edgar Núñez", "Lady Pinzón", "Jorge Martinez", "Leonardo Valvuena"], 
-            "tipoRecurso": "Banner", "url": "https://registro.uniandes.edu.co/images/lofthumbs/1186x407/images/stories/inscripciones_201910.jpg"}]
+            "tipoRecurso": "Banner", 
+            "url": "https://registro.uniandes.edu.co/images/lofthumbs/1186x407/images/stories/inscripciones_201910.jpg"
+        },
+        {   
+            "id": 1,
+            "nombre": "Dibujo Scrum",
+            "etiquetas": "Dibujo Scrum infografia",
+            "fechaRegistro": "2018-10-03T05:15:04",
+            "responsables": ["Orlando Sabogal", "Leonardo Valvuena"],
+            "tipoRecurso": "Video",
+            "url": "https://k30.kn3.net/taringa/3/8/B/C/A/9/NegroGinez/9BE.jpg"
+        },
+        {
+            "etiquetas": "Desarrollo Python programa video", 
+            "fechaRegistro": "2018-10-03T05:15:04", 
+            "id": 0, 
+            "nombre": "Desarrollo Python2", 
+            "resource_uri": "/gestired/resource/1/", 
+            "responsables": ["Orlando Sabogal", "Leonardo Valvuena"], 
+            "tipoRecurso": "Video", 
+            "url": "https://k30.kn3.net/taringa/3/8/B/C/A/9/NegroGinez/9BE.jpg"
+        },
+        {
+            "etiquetas": "Dibujo Scrum infografia", 
+            "fechaRegistro": "2018-10-05T01:38:44", 
+            "id": 2, 
+            "nombre": "Dibujo Scrum", 
+            "resource_uri": "/gestired/resource/2/", 
+            "responsables":["Lady Pinzón", "Leonardo Valvuena"], 
+            "tipoRecurso": "Infografía", 
+            "url": "https://www.multiplica.com/wp-content/uploads/2017/08/scrum2.png"
+        },
+        {
+            "etiquetas": "Dibujo Kanban imagen web", 
+            "fechaRegistro": "2018-10-05T01:43:53", 
+            "id": 3, 
+            "nombre": "Dibujo Kanban", 
+            "resource_uri": "/gestired/resource/3/",
+            "responsables": ["Edgar Núñez", "Jorge Martinez"], 
+            "tipoRecurso": "Elemento WEB",
+            "url": "https://skelia.com/wp-content/uploads/2017/03/Scrum-vs-Kanban-06.png"
+        },             
+        {
+            "etiquetas": "Fondo MiBanner imagen web", 
+            "fechaRegistro": "2018-10-05T01:54:25", 
+            "id": 4, 
+            "nombre": "Fondo MiBanner", 
+            "resource_uri": "/gestired/resource/4/", 
+            "responsables": ["Orlando Sabogal", "Edgar Núñez", "Lady Pinzón", "Jorge Martinez", "Leonardo Valvuena"], 
+            "tipoRecurso": "Banner", 
+            "url": "https://registro.uniandes.edu.co/images/lofthumbs/1186x407/images/stories/inscripciones_201910.jpg"
+        },
+        {   
+            "id": 1,
+            "nombre": "Dibujo Scrum",
+            "etiquetas": "Dibujo Scrum infografia",
+            "fechaRegistro": "2018-10-03T05:15:04",
+            "responsables": ["Orlando Sabogal", "Leonardo Valvuena"],
+            "tipoRecurso": "Video",
+            "url": "https://k30.kn3.net/taringa/3/8/B/C/A/9/NegroGinez/9BE.jpg"
+        },
+        {
+            "etiquetas": "Desarrollo Python programa video", 
+            "fechaRegistro": "2018-10-03T05:15:04", 
+            "id": 0, 
+            "nombre": "Desarrollo Python2", 
+            "resource_uri": "/gestired/resource/1/", 
+            "responsables": ["Orlando Sabogal", "Leonardo Valvuena"], 
+            "tipoRecurso": "Video", 
+            "url": "https://k30.kn3.net/taringa/3/8/B/C/A/9/NegroGinez/9BE.jpg"
+        },
+        {
+            "etiquetas": "Dibujo Scrum infografia", 
+            "fechaRegistro": "2018-10-05T01:38:44", 
+            "id": 2, 
+            "nombre": "Dibujo Scrum", 
+            "resource_uri": "/gestired/resource/2/", 
+            "responsables":["Lady Pinzón", "Leonardo Valvuena"], 
+            "tipoRecurso": "Infografía", 
+            "url": "https://www.multiplica.com/wp-content/uploads/2017/08/scrum2.png"
+        },
+        {
+            "etiquetas": "Dibujo Kanban imagen web", 
+            "fechaRegistro": "2018-10-05T01:43:53", 
+            "id": 3, 
+            "nombre": "Dibujo Kanban", 
+            "resource_uri": "/gestired/resource/3/",
+            "responsables": ["Edgar Núñez", "Jorge Martinez"], 
+            "tipoRecurso": "Elemento WEB",
+            "url": "https://skelia.com/wp-content/uploads/2017/03/Scrum-vs-Kanban-06.png"
+        },             
+        {
+            "etiquetas": "Fondo MiBanner imagen web", 
+            "fechaRegistro": "2018-10-05T01:54:25", 
+            "id": 4, 
+            "nombre": "Fondo MiBanner", 
+            "resource_uri": "/gestired/resource/4/", 
+            "responsables": ["Orlando Sabogal", "Edgar Núñez", "Lady Pinzón", "Jorge Martinez", "Leonardo Valvuena"], 
+            "tipoRecurso": "Banner", 
+            "url": "https://registro.uniandes.edu.co/images/lofthumbs/1186x407/images/stories/inscripciones_201910.jpg"
+        },
+        {   
+            "id": 1,
+            "nombre": "Dibujo Scrum",
+            "etiquetas": "Dibujo Scrum infografia",
+            "fechaRegistro": "2018-10-03T05:15:04",
+            "responsables": ["Orlando Sabogal", "Leonardo Valvuena"],
+            "tipoRecurso": "Video",
+            "url": "https://k30.kn3.net/taringa/3/8/B/C/A/9/NegroGinez/9BE.jpg"
+        },
+        {
+            "etiquetas": "Desarrollo Python programa video", 
+            "fechaRegistro": "2018-10-03T05:15:04", 
+            "id": 0, 
+            "nombre": "Desarrollo Python2", 
+            "resource_uri": "/gestired/resource/1/", 
+            "responsables": ["Orlando Sabogal", "Leonardo Valvuena"], 
+            "tipoRecurso": "Video", 
+            "url": "https://k30.kn3.net/taringa/3/8/B/C/A/9/NegroGinez/9BE.jpg"
+        },
+        {
+            "etiquetas": "Dibujo Scrum infografia", 
+            "fechaRegistro": "2018-10-05T01:38:44", 
+            "id": 2, 
+            "nombre": "Dibujo Scrum", 
+            "resource_uri": "/gestired/resource/2/", 
+            "responsables":["Lady Pinzón", "Leonardo Valvuena"], 
+            "tipoRecurso": "Infografía", 
+            "url": "https://www.multiplica.com/wp-content/uploads/2017/08/scrum2.png"
+        },
+        {
+            "etiquetas": "Dibujo Kanban imagen web", 
+            "fechaRegistro": "2018-10-05T01:43:53", 
+            "id": 3, 
+            "nombre": "Dibujo Kanban", 
+            "resource_uri": "/gestired/resource/3/",
+            "responsables": ["Edgar Núñez", "Jorge Martinez"], 
+            "tipoRecurso": "Elemento WEB",
+            "url": "https://skelia.com/wp-content/uploads/2017/03/Scrum-vs-Kanban-06.png"
+        },             
+        {
+            "etiquetas": "Fondo MiBanner imagen web", 
+            "fechaRegistro": "2018-10-05T01:54:25", 
+            "id": 4, 
+            "nombre": "Fondo MiBanner", 
+            "resource_uri": "/gestired/resource/4/", 
+            "responsables": ["Orlando Sabogal", "Edgar Núñez", "Lady Pinzón", "Jorge Martinez", "Leonardo Valvuena"], 
+            "tipoRecurso": "Banner", 
+            "url": "https://registro.uniandes.edu.co/images/lofthumbs/1186x407/images/stories/inscripciones_201910.jpg"
+        },
+        {   
+            "id": 1,
+            "nombre": "Dibujo Scrum",
+            "etiquetas": "Dibujo Scrum infografia",
+            "fechaRegistro": "2018-10-03T05:15:04",
+            "responsables": ["Orlando Sabogal", "Leonardo Valvuena"],
+            "tipoRecurso": "Video",
+            "url": "https://k30.kn3.net/taringa/3/8/B/C/A/9/NegroGinez/9BE.jpg"
         }
+    ]
+}

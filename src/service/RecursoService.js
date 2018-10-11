@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+const urlBase = "http://127.0.0.1:8000/gestired";
+
 export class RecursoService {
     
     getRecursosSmall() {
@@ -17,8 +19,18 @@ export class RecursoService {
                 .then(res => res.data.data);
     }
 
-    getRecursos() {
-        return axios.get('assets/demo/data/cars-large.json')
-                .then(res => res.data.objects);
+    getRecursos(onComplete, onError) {
+        const url = urlBase+"/resource/";
+    
+        return  axios.get(url)
+     .then(onComplete ? onComplete : res=>res.data.objects)
+     .catch(onError ? onError : (error) => console.log(error));
+    }
+
+    getRecursosEtiquetas(etiqueta, onComplete, onError) {
+        const  url = urlBase+"/resource/?etiquetas__contains="+etiqueta;
+     return  axios.get(url)
+     .then(onComplete ? onComplete : res => res.data.objects)
+    .catch(onError ? onError : (error) => console.log(error));
     }
 }
