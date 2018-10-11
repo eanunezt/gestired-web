@@ -210,9 +210,17 @@ export class RecursoDigital extends Component {
 
     render() {
         const header = this.renderHeader();
-        const size=this.state.recursos.length;
         const row=2;
-        const isPag=size>row;
+        var isPaginatorActive=false;
+        var sizeALt=2;
+        
+        if(this.state.recursos!==null && this.state.recursos!= undefined)
+        {
+            sizeALt=this.state.recursos.length; 
+            isPaginatorActive=size>row;
+        }
+        const size=sizeALt;
+        const isPag=isPaginatorActive;
         
        
         return (
