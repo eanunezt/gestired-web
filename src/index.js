@@ -13,6 +13,7 @@ ReactDOM.render(
         </ScrollToTop>
     </HashRouter>,
     document.getElementById('root')
+    
 );
 
 //registerServiceWorker();

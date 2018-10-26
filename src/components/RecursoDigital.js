@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
 import {Dialog} from 'primereact/dialog';
-//import {Panel} from 'primereact/panel';
 import {RecursoService} from '../service/RecursoService';
-import {DataView, DataViewLayoutOptions} from "primereact/dataview";
+import {DataView} from "primereact/dataview";
 import {Button} from "primereact/button";
 import {Dropdown} from "primereact/dropdown";
 import {InputText} from 'primereact/inputtext';
 import {Card} from 'primereact/card';
-import axios from 'axios';
+import { withRouter } from 'react-router-dom'
+import queryString from 'query-string';
+
+
 
 export class RecursoDigital extends Component {
     constructor() {
@@ -20,31 +22,61 @@ export class RecursoDigital extends Component {
             visible: false,
             sortKey: null,
             sortOrder: null
-        };
+        }
         this.recursoService = new RecursoService();
         this.itemTemplate = this.itemTemplate.bind(this);
         this.onSortChange = this.onSortChange.bind(this);
         this.updateInputSearch= this.updateInputSearch.bind(this);
         this.handleClickFiltro =this.handleClickFiltro.bind(this);
     }
+
     componentDidMount() {
-      this.recursoService.
-      getRecursos().then(data => this.setState({recursos: data}));
+
+    console.log(this.props);
+    console.log(this.props.location.search);
+
+    let params = queryString.parse(this.props.location.search)
+    // console.log(params);
+    console.log(params.etiqueta);
+
+    this.setState({searchEtiqueta:params.etiqueta});
+
+    if(/*this.state.searchEtiqueta*/params.etiqueta!==""){
+        this.recursoService.getRecursosEtiquetas(/*this.state.searchEtiqueta*/params.etiqueta).then(
+            res => { 
+            const data = res;
+            console.log(data);
+            this.setState({recursos: data}); 
+            }
+        );
+        console.log('The link was clicked -> getRecursosEtiquetas');
+    }else {
+        this.setState({recursos: []});    
     }
 
+  /*    this.recursoService.getRecursos().then(res => {       
+        const data = res;
+        if(res!==null && res!==undefined){
+            console.log(data);
+        this.setState({recursos: data});                
+        
+      }else{
+        this.setState({recursos: []}); 
+      }
+     } );*/
+    }
     
 
     handleClickFiltro(e) {
-        e.preventDefault();
+        e.preventDefault();       
         console.log("----->"+this.state.searchEtiqueta);
+        
         if(this.state.searchEtiqueta!==""){
-            this.recursoService.
-            getRecursosEtiquetas(this.state.searchEtiqueta).then(
-            res => {       
+            this.recursoService.getRecursosEtiquetas(this.state.searchEtiqueta).then(
+            res => { 
                 const data = res;
-                this.setState({recursos: data});                
-                console.log(data)
-                
+                console.log(data);
+                this.setState({recursos: data}); 
               }
         );
         console.log('The link was clicked -> getRecursosEtiquetas');
@@ -52,6 +84,19 @@ export class RecursoDigital extends Component {
                 this.setState({recursos: []});    
             }
       }
+
+      
+      updateInputSearch(event) {
+        //const value = event.value;
+        console.log(event.target.value);
+        this.setState({searchEtiqueta:event.target.value});
+    
+    }
+    /*onBuscarRecursos(e) {
+        console.log("----->RecursoDigital.onBuscarRecursos");
+        //this.handleClickFiltro(e);
+     }*/
+ 
 
     onSortChange(event) {
         const value = event.value;
@@ -72,17 +117,11 @@ export class RecursoDigital extends Component {
         }
     }
 
-    updateInputSearch(event) {
-        const value = event.value;
-
-            this.setState({
-                searchEtiqueta: event.target.value
-            });
-    }
+    
 
     renderListItem(recurso) {
         if (!recurso) {
-            return;
+            return <div/>;
         }
         let srcImg = "assets/demo/images/recurso/" + recurso.nombre + ".png";
         return (
@@ -115,7 +154,7 @@ export class RecursoDigital extends Component {
 
     renderGridItem(recurso) {
         if (!recurso) {
-            return;
+            return <div/>;
         }
        
         return (
@@ -144,7 +183,7 @@ export class RecursoDigital extends Component {
 
     itemTemplate(recurso, layout) {
         if (!recurso) {
-            return;
+            return <div/>;
         }
 
         if (layout === 'list')
@@ -210,20 +249,22 @@ export class RecursoDigital extends Component {
 
     render() {
         const header = this.renderHeader();
-        const row=2;
+        const row=10;
         var isPaginatorActive=false;
-        var sizeALt=2;
         
-        if(this.state.recursos!==null && this.state.recursos!= undefined)
+        
+        if(this.state.recursos!==null 
+            && this.state.recursos!== undefined)
         {
-            sizeALt=this.state.recursos.length; 
-            isPaginatorActive=size>row;
+            var sizeALt=this.state.recursos.length; 
+            isPaginatorActive=sizeALt>(row);
+
         }
-        const size=sizeALt;
+        const sizeRow=row;
         const isPag=isPaginatorActive;
         
        
-        return (
+        return ( 
             <div>
                 <div className="content-section introduction">
                     <div className="feature-intro">
@@ -233,16 +274,21 @@ export class RecursoDigital extends Component {
                 </div>
 
                 <div className="content-section implementation">
-                    <DataView value={this.state.recursos} layout={this.state.layout} header={header} 
-                            itemTemplate={this.itemTemplate} paginatorPosition={'both'} paginator={isPag} rows={row} 
-                            sortOrder={this.state.sortOrder} sortField={this.state.sortField} />
+                    <DataView value={this.state.recursos} 
+                     layout={this.state.layout} header={header} 
+                            itemTemplate={this.itemTemplate} paginatorPosition={'both'} paginator={isPag} rows={sizeRow} 
+                            sortOrder={this.state.sortOrder} sortField={this.state.sortField}
+                            pageLinks={sizeRow} />
 
                     <Dialog header="Recurso Details" visible={this.state.visible} width="225px" modal={true} onHide={() => this.setState({visible: false})}>
                         {this.renderRecursoDialogContent()}
                     </Dialog>
                 </div>
             </div>
-        );
+           );
+        
     }
 }
+
+export default withRouter(RecursoDigital);
 

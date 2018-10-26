@@ -4,7 +4,7 @@ import {AppTopbar} from './AppTopbar';
 import {AppFooter} from './AppFooter';
 import {AppMenu} from './AppMenu';
 import {AppInlineProfile} from './AppInlineProfile';
-import {Route} from 'react-router-dom';
+import {Route,withRouter, Redirect} from 'react-router-dom';
 import {Dashboard} from './components/Dashboard';
 import {RecursoDigital} from './components/RecursoDigital';
 import {ScrollPanel} from 'primereact/components/scrollpanel/ScrollPanel';
@@ -14,6 +14,9 @@ import 'primeicons/primeicons.css';
 import 'fullcalendar/dist/fullcalendar.css';
 import './layout/layout.css';
 import './App.css';
+import { EmptyPage } from './components/EmptyPage';
+import PropTypes from 'prop-types'
+
 
 class App extends Component {
 
@@ -24,14 +27,18 @@ class App extends Component {
             layoutColorMode: 'dark',
             staticMenuInactive: false,
             overlayMenuActive: false,
-            mobileMenuActive: false
+            mobileMenuActive: false,
+            searchEtiqueta:''
         };
 
         this.onWrapperClick = this.onWrapperClick.bind(this);
         this.onToggleMenu = this.onToggleMenu.bind(this);
         this.onSidebarClick = this.onSidebarClick.bind(this);
         this.onMenuItemClick = this.onMenuItemClick.bind(this);
+        this.updateInputSearch= this.updateInputSearch.bind(this);
+        this.onHandleEventInputSearch=this.onHandleEventInputSearch.bind(this);
         this.createMenu();
+        
     }
 
     onWrapperClick(event) {
@@ -44,6 +51,58 @@ class App extends Component {
 
         this.menuClick = false;
     }
+
+    
+
+     updateInputSearch(event) {
+        this.setState({
+            searchEtiqueta: event.target.value
+        });
+        }
+
+        onHandleEventInputSearch(event) {
+       
+            const value = event.target.value;
+            console.log('event.keyCode--->'+event.keyCode);
+            console.log(this.props.history);
+          
+            if(event.keyCode===13){
+           
+                 if(value!==''){
+                   // window.location = '#/recursos/?etiqueta='
+                    const url='/recursos/';//+'?etiqueta='+value;
+                   const pathNew=url+'?etiqueta='+value;
+                
+                    this.props.history.location.hash=value;
+                    this.props.history.location.state={}
+                    console.log(this.props.history.location);
+                    if(url!==this.props.history.location.pathname ){ 
+                        console.log('push');
+                        this.props.history.push(pathNew);
+                    }else{
+                        //window.location =  '?etiqueta='+value;
+                        console.log('replace');
+                        //this.props.history.push('?etiqueta='+value);
+                        this.props.history.replace({
+                            pathname: '/buscarecursos', state: {}, search: '?etiqueta='+value, hash: value
+                        });
+                        this.props.history.push('/buscar/recursos/?etiqueta='+value);
+                        //window.location.reload();
+                        //this.props.history.block();
+                    }
+                    //this.props.history.push('/');
+                   
+                   // this.props.history.goForward(url);
+                 
+                    console.log('updateInputSearch-url--->'+url);
+                }
+            }
+       //event.preventDefault();
+        }
+
+        
+
+     
 
     onToggleMenu(event) {
         this.menuClick = true;
@@ -88,9 +147,9 @@ class App extends Component {
         this.menu = [
             {label: 'Dashboard', icon: 'pi pi-fw pi-globe', command: () => {window.location = '#/'}},
             {
-                label: 'Recursos', icon: 'pi pi-fw pi-globe', badge: '9',
+                label: 'Recursos', icon: 'pi pi-fw pi-globe',
                 items: [
-                    {label: 'Buscar Recursos', icon: 'pi pi-fw pi-star-o', command: () => {window.location = '#/recursos'}}
+                    {label: 'Buscar Recursos', icon: 'pi pi-fw pi-star-o', command: () => {window.location = '#/recursos/?etiqueta='}}
                 ]
             },
             {
@@ -149,7 +208,10 @@ class App extends Component {
 
         return (
             <div className={wrapperClass} onClick={this.onWrapperClick}>
-                <AppTopbar onToggleMenu={this.onToggleMenu}/>
+                <AppTopbar onToggleMenu={this.onToggleMenu} 
+                onBuscarRecursos={this.updateInputSearch} 
+                valueSearch={this.state.searchEtiqueta}
+                onEventBuscarRecursos={this.onHandleEventInputSearch}/>
 
                 <div ref={(el) => this.sidebar = el} className={sidebarClassName} onClick={this.onSidebarClick}>
 
@@ -167,7 +229,12 @@ class App extends Component {
                 <div className="layout-main">
 				
                     <Route path="/" exact component={Dashboard} />
-                    <Route path="/recursos" component={RecursoDigital} />
+                    <Route path="/recursos/" component={RecursoDigital}  />
+                    <Route path="/detalle/recurso" component={EmptyPage} />
+                    <Route path="/buscar/recursos/" component={RecursoDigital} />
+                   
+
+                   
                 </div>
 
                 <AppFooter />
@@ -178,4 +245,5 @@ class App extends Component {
     }
 }
 
-export default App;
+//export default App;
+export default withRouter(App)
