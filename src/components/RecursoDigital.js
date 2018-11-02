@@ -6,7 +6,7 @@ import {Button} from "primereact/button";
 import {Dropdown} from "primereact/dropdown";
 import {InputText} from 'primereact/inputtext';
 import {Card} from 'primereact/card';
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import queryString from 'query-string';
 
 
@@ -176,6 +176,13 @@ export class RecursoDigital extends Component {
                     <a onClick={(e) => this.setState({ selectedRecurso: recurso, visible: true })} style={{ cursor: 'pointer'}}>
                     
                         <span className="pi pi-search"/>
+                    </a>
+                    <span style={{ padding: '5px'}}/>
+                    <Link to={{pathname:'/temeline', state:{resource:recurso}}} style={{ cursor: 'pointer'}}><span className="pi pi-calendar-times"/></Link>
+                    <span style={{ padding: '5px'}}/>
+                    <a onClick={(e) => this.setState({ selectedRecurso: recurso, visible: true })} style={{ cursor: 'pointer'}}>
+                    
+                        <span className="pi pi-users"/>
                     </a>
             </Card>
                

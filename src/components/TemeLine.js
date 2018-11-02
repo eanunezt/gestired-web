@@ -1,14 +1,5 @@
 import React, { Component } from 'react';
 import {RecursoService} from '../service/RecursoService';
-import {Panel} from 'primereact/panel';
-import {Checkbox} from 'primereact/checkbox';
-import {Button} from 'primereact/button';
-import {Dropdown} from 'primereact/dropdown';
-import {InputText} from 'primereact/inputtext';
-import {Chart} from 'primereact/chart';
-import {DataTable} from 'primereact/datatable';
-import {Column} from 'primereact/column';
-import {Schedule} from 'primereact/schedule';
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import { Star} from 'material-ui/styles';
@@ -108,7 +99,7 @@ export class TemeLine extends Component {
     className="vertical-timeline-element--education"
     date="April 2013"
     iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
-    icon={School}
+    icon={<School/>}
   >
     <h3 className="vertical-timeline-element-title">Content Marketing for Web, Mobile and Social Media</h3>
     <h4 className="vertical-timeline-element-subtitle">Online Course</h4>
@@ -120,7 +111,7 @@ export class TemeLine extends Component {
     className="vertical-timeline-element--education"
     date="November 2012"
     iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
-    icon={School}
+    icon={<School/>}
   >
     <h3 className="vertical-timeline-element-title">Agile Development Scrum Master</h3>
     <h4 className="vertical-timeline-element-subtitle">Certification</h4>
@@ -132,7 +123,7 @@ export class TemeLine extends Component {
     className="vertical-timeline-element--education"
     date="2002 - 2006"
     iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
-    icon={School}
+    icon={<School/>}
   >
     <h3 className="vertical-timeline-element-title">Bachelor of Science in Interactive Digital Media Visual Imaging</h3>
     <h4 className="vertical-timeline-element-subtitle">Bachelor Degree</h4>
