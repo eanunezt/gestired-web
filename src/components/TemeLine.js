@@ -11,7 +11,7 @@ import {DataTable} from 'primereact/datatable';
 import {Column} from 'primereact/column';
 import {Schedule} from 'primereact/schedule';
 
-export class Dashboard extends Component {
+export class TemeLine extends Component {
 
     constructor() {
         super();

@@ -69,24 +69,26 @@ class App extends Component {
             if(event.keyCode===13){
            
                  if(value!==''){
-                   // window.location = '#/recursos/?etiqueta='
-                    const url='/recursos/';//+'?etiqueta='+value;
-                   const pathNew=url+'?etiqueta='+value;
+                   // window.location = '#/recursos/?label='
+                    const url='/recursos/';//+'?label='+value;
+                   const pathNew=url+'?label='+value;
                 
                     this.props.history.location.hash=value;
                     this.props.history.location.state={}
                     console.log(this.props.history.location);
                     if(url!==this.props.history.location.pathname ){ 
                         console.log('push');
-                        this.props.history.push(pathNew);
+                        this.props.history.push({pathname: url, state: {bar:'foo1'}, search: '?label='+value});
                     }else{
-                        //window.location =  '?etiqueta='+value;
+                        //window.location =  '?label='+value;
                         console.log('replace');
-                        //this.props.history.push('?etiqueta='+value);
-                        this.props.history.replace({
-                            pathname: '/buscarecursos', state: {}, search: '?etiqueta='+value, hash: value
-                        });
-                        this.props.history.push('/buscar/recursos/?etiqueta='+value);
+                        //this.props.history.push('?label='+value);
+                       /* this.props.history.replace({
+                            pathname: '/buscarecursos', 
+                            state: {bar:'foo1'}, search: '?label=' + value
+                        });*/
+                        //this.props.history.push('/buscar/recursos/?label='+value);
+                        this.props.history.push({pathname: '/buscar/recursos/', state: {bar:'foo2'}, search: '?label='+value});
                         //window.location.reload();
                         //this.props.history.block();
                     }
@@ -149,7 +151,7 @@ class App extends Component {
             {
                 label: 'Recursos', icon: 'pi pi-fw pi-globe',
                 items: [
-                    {label: 'Buscar Recursos', icon: 'pi pi-fw pi-star-o', command: () => {window.location = '#/recursos/?etiqueta='}}
+                    {label: 'Buscar Recursos', icon: 'pi pi-fw pi-star-o', command: () => {window.location = '#/recursos/?label='}}
                 ]
             },
             {

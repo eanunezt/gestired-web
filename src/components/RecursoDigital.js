@@ -17,7 +17,7 @@ export class RecursoDigital extends Component {
         this.state = { 
             recursos: [],
             layout: 'grid',
-            searchEtiqueta: '',
+            searchLabel: '',
             selectedRecurso: null, 
             visible: false,
             sortKey: null,
@@ -33,23 +33,25 @@ export class RecursoDigital extends Component {
     componentDidMount() {
 
     console.log(this.props);
+    console.log(this.props.location.state);
+    
     console.log(this.props.location.search);
 
     let params = queryString.parse(this.props.location.search)
     // console.log(params);
-    console.log(params.etiqueta);
+    console.log(params.label);
 
-    this.setState({searchEtiqueta:params.etiqueta});
+    this.setState({searchLabel:params.label});
 
-    if(/*this.state.searchEtiqueta*/params.etiqueta!==""){
-        this.recursoService.getRecursosEtiquetas(/*this.state.searchEtiqueta*/params.etiqueta).then(
+    if(/*this.state.searchLabel*/params.label!==""){
+        this.recursoService.getRecursosLabels(/*this.state.searchLabel*/params.label).then(
             res => { 
             const data = res;
             console.log(data);
             this.setState({recursos: data}); 
             }
         );
-        console.log('The link was clicked -> getRecursosEtiquetas');
+        console.log('The link was clicked -> getRecursosLabels');
     }else {
         this.setState({recursos: []});    
     }
@@ -69,17 +71,17 @@ export class RecursoDigital extends Component {
 
     handleClickFiltro(e) {
         e.preventDefault();       
-        console.log("----->"+this.state.searchEtiqueta);
+        console.log("----->"+this.state.searchLabel);
         
-        if(this.state.searchEtiqueta!==""){
-            this.recursoService.getRecursosEtiquetas(this.state.searchEtiqueta).then(
+        if(this.state.searchLabel!==""){
+            this.recursoService.getRecursosLabels(this.state.searchLabel).then(
             res => { 
                 const data = res;
                 console.log(data);
                 this.setState({recursos: data}); 
               }
         );
-        console.log('The link was clicked -> getRecursosEtiquetas');
+        console.log('The link was clicked -> getRecursosLabels');
             }else {
                 this.setState({recursos: []});    
             }
@@ -89,7 +91,7 @@ export class RecursoDigital extends Component {
       updateInputSearch(event) {
         //const value = event.value;
         console.log(event.target.value);
-        this.setState({searchEtiqueta:event.target.value});
+        this.setState({searchLabel:event.target.value});
     
     }
     /*onBuscarRecursos(e) {
@@ -123,22 +125,22 @@ export class RecursoDigital extends Component {
         if (!recurso) {
             return <div/>;
         }
-        let srcImg = "assets/demo/images/recurso/" + recurso.nombre + ".png";
+        let srcImg = "assets/demo/images/recurso/" + recurso.name + ".png";
         return (
             <div className="p-col-12" style={{padding: '2em', borderBottom: '1px solid #d9d9d9'}}>
                 <div className="p-col-12 p-md-3">
-                    <img src={srcImg} alt={recurso.nombre}/>
+                    <img src={srcImg} alt={recurso.name}/>
                 </div>
                 <div className="p-col-12 p-md-8 recurso-details">
                     <div className="p-grid">
                         <div className="p-col-2 p-sm-6">Vin:</div>
-                        <div className="p-col-10 p-sm-6">{recurso.tipoRecurso}</div>
+                        <div className="p-col-10 p-sm-6">{recurso.resourceType}</div>
 
                         <div className="p-col-2 p-sm-6">Year:</div>
-                        <div className="p-col-10 p-sm-6">{recurso.fechaRegistro}</div>
+                        <div className="p-col-10 p-sm-6">{recurso.registrationDate}</div>
 
                         <div className="p-col-2 p-sm-6">Brand:</div>
-                        <div className="p-col-10 p-sm-6">{recurso.nombre}</div>
+                        <div className="p-col-10 p-sm-6">{recurso.name}</div>
 
                         <div className="p-col-2 p-sm-6">Color:</div>
                         <div className="p-col-10 p-sm-6">{recurso.url}</div>
@@ -160,13 +162,13 @@ export class RecursoDigital extends Component {
         return (
             <div style={{ padding: '.5em' }} className="p-col-12 p-md-3">
 
-              <Card title={recurso.tipoRecurso} subTitle={recurso.nombre} style={{ textAlign: 'center', margin: 'auto' }}>
+              <Card title={recurso.tipoRecurso} subTitle={recurso.name} style={{ textAlign: 'center', margin: 'auto' }}>
               <div style={{ width: '100%' }} className="p-col-12 p-md-3">
-                    <img src={recurso.url} alt={recurso.nombre} height="42" width="42"  />
+                    <img src={recurso.url} alt={recurso.name} height="42" width="42"  />
                 </div>
                 <div className="recurso-detail" style={{ textAlign: 'center', margin: 'auto' }}>
                
-                {new Intl.DateTimeFormat().format(new Date(recurso.fechaRegistro))}
+                {new Intl.DateTimeFormat().format(new Date(recurso.registrationDate))}
                
                 </div>
                     <hr className="ui-widget-content" style={{ borderTop: 0 }} />
@@ -196,11 +198,11 @@ export class RecursoDigital extends Component {
               
         if (this.state.selectedRecurso) {
 
-          //  let srcImg = "assets/demo/images/recurso/" + this.state.selectedRecurso.nombre + ".png";
+          //  let srcImg = "assets/demo/images/recurso/" + this.state.selectedRecurso.name + ".png";
             return (
 
 
-                <Card title={this.state.selectedRecurso.tipoRecurso} subTitle={this.state.selectedRecurso.nombre} style={{ textAlign: 'center' }}>
+                <Card title={this.state.selectedRecurso.tipoRecurso} subTitle={this.state.selectedRecurso.name} style={{ textAlign: 'center' }}>
                 <div className="recurso-detail"> 
                 {new Intl.DateTimeFormat().format(new Date(this.state.selectedRecurso.fechaRegistro))}
                 </div>
@@ -218,7 +220,7 @@ export class RecursoDigital extends Component {
 
     renderHeader() {
         const sortOptions = [
-            {label: 'Nombre', value: 'nombre'},
+            {label: 'Nombre', value: 'name'},
             {label: 'Tipo', value: 'tipoRecurso'},
             {label: 'Fecha ascendente', value: 'fechaRegistro'},
             {label: 'Fecha descendiente ', value: '!fechaRegistro'}
@@ -228,7 +230,7 @@ export class RecursoDigital extends Component {
             <div className="p-g">            
             <div className="p-g-6 p-md-4 filter-container">
                     <div style={{position:'relative'}}>
-                        <InputText placeholder="Buscar por Etiqueta" value={this.state.searchEtiqueta}  onChange={this.updateInputSearch} />
+                        <InputText placeholder="Buscar por Label" value={this.state.searchLabel}  onChange={this.updateInputSearch} />
                        <Button icon="pi pi-search" onClick={this.handleClickFiltro}></Button>
                     </div>
                     

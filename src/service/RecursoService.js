@@ -27,8 +27,8 @@ export class RecursoService {
      .catch(onError ? onError : (error) => console.log(error));
     }
 
-    getRecursosEtiquetas(etiqueta, onComplete, onError) {
-        const  url = urlBase+"/resource/?etiquetas__contains="+etiqueta;
+    getRecursosLabels(label, onComplete, onError) {
+        const  url = urlBase+"/resource/?labels__contains="+label;
      return  axios.get(url)
      .then(onComplete ? onComplete : res => res.data.objects)
     .catch(onError ? onError : (error) => console.log(error));
