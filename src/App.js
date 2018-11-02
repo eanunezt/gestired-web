@@ -15,6 +15,7 @@ import 'fullcalendar/dist/fullcalendar.css';
 import './layout/layout.css';
 import './App.css';
 import { EmptyPage } from './components/EmptyPage';
+import { TemeLine } from './components/TemeLine';
 import PropTypes from 'prop-types'
 
 
@@ -234,6 +235,7 @@ class App extends Component {
                     <Route path="/recursos/" component={RecursoDigital}  />
                     <Route path="/detalle/recurso" component={EmptyPage} />
                     <Route path="/buscar/recursos/" component={RecursoDigital} />
+                    <Route path="/temeline/" component={TemeLine} />
                    
 
                    

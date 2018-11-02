@@ -204,7 +204,7 @@ export class RecursoDigital extends Component {
 
                 <Card title={this.state.selectedRecurso.tipoRecurso} subTitle={this.state.selectedRecurso.name} style={{ textAlign: 'center' }}>
                 <div className="recurso-detail"> 
-                {new Intl.DateTimeFormat().format(new Date(this.state.selectedRecurso.fechaRegistro))}
+                {new Intl.DateTimeFormat().format(new Date(this.state.selectedRecurso.registrationDate))}
                 </div>
                     <hr className="ui-widget-content" style={{ borderTop: 0 }} />
                   
@@ -222,8 +222,8 @@ export class RecursoDigital extends Component {
         const sortOptions = [
             {label: 'Nombre', value: 'name'},
             {label: 'Tipo', value: 'tipoRecurso'},
-            {label: 'Fecha ascendente', value: 'fechaRegistro'},
-            {label: 'Fecha descendiente ', value: '!fechaRegistro'}
+            {label: 'Fecha ascendente', value: 'registrationDate'},
+            {label: 'Fecha descendiente ', value: '!registrationDate'}
         ];
 
         return (
